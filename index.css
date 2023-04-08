@@ -1,0 +1,84 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: #333;
+}
+
+.btn {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 240px;
+    height: 120px;
+    background-color: #222;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: inset -5px -5px 15px rgba(0, 0, 0, 0.7),
+        inset -1px -1px 1px black,
+        inset 5px 5px 10px rgba(255, 255, 255, 0.5),
+        inset 1px 1px 1px rgba(255, 255, 255, 0.7),
+        5px 5px 15px rgba(0, 0, 0, 0.7);
+    cursor: pointer;
+}
+
+.btn:active {
+    box-shadow: inset 5px 5px 15px rgba(0, 0, 0, 0.7),
+        inset 1px 1px 1px black,
+        inset -5px -5px 10px rgba(255, 255, 255, 0.5),
+        inset -1px -1px 1px rgba(255, 255, 255, 0.7);
+}
+
+.btn::before {
+    position: absolute;
+    content: '';
+    top: var(--y);
+    left: var(--x);
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(238, 83, 83, 0.5);
+    transform: translate(-50%, -50%);
+    transition: width 0.5s, height 0.5s;
+    animation: animate 5s linear infinite;
+}
+
+@keyframes animate {
+    0% {
+        filter: hue-rotate(0deg)
+    }
+
+    100% {
+        filter: hue-rotate(360deg)
+    }
+}
+
+.btn:hover::before {
+    width: 500px;
+    height: 500px;
+}
+
+a {
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 25px;
+    font-weight: 700;
+    color: #fff;
+    z-index: 2;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    transition: 0.7s;
+}
+
+.btn:hover a {
+    letter-spacing: 5px;
+    transform: scale(1.5);
+}
